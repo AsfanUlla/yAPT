@@ -11,7 +11,7 @@ echo 1 > /www/cgi-bin/sword/wifi/mon.txt
 else
 	card=$(iw dev | awk '$1=="Interface"{print $2}')
 	echo "<h2>Starting Monitor Mode on $card</h2>"
-	echo "<pre> $(airmon-ng start $card) </pre>"
+	echo "<pre> $(sudo airmon-ng start $card) </pre>"
 	echo "<br>"
 	echo 1 > /www/cgi-bin/sword/wifi/mon.txt
 fi
