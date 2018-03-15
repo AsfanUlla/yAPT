@@ -10,11 +10,11 @@ echo '<title>PixieWPS Attack</title>'
 echo '</head>'
 echo '<body>'
 
-mon0check='ip addr | grep mon0 | awk '{print $1}' | cut -b 4'
-if [ $mon0check -ne 0 ]; then
+mon0check='ifconfig | grep mon | awk '{print $1}' | cut -b 5'
+if [ $mon0check -ne 1 ]; then
 echo "<script>alert(\"Wi-Fi monitor mode is not enabled.\")</script>"
 else
-echo "<pre> $(sudo timeout 20 wash -i wlan0)"
+echo "<pre> $(sudo timeout 20 wash -i wlan1mon)"
 fi  
   echo "<form method=GET action=\"${SCRIPT}\">"\
        '<table nowrap>'\
