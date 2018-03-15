@@ -13,7 +13,7 @@ if [ $mon0check -eq 0 ]; then
 echo "<script>alert(\"Wi-Fi monitor mode already enabed on Mon0\")</script>"
 echo 1 > /www/cgi-bin/sword/wifi/mon.txt
 else
-	card=$(iw dev | awk '$1=="Interface"{print $2}')
+	card=$(iw dev | awk '$1=="Interface"{print $2}' | sed -e '2d' )
 	echo "<h2>Starting Monitor Mode on $card</h2>"
 	echo "<pre> $(sudo airmon-ng start $card) </pre>"
 	echo "<br>"
