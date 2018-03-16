@@ -15,7 +15,7 @@ echo 1 > /www/cgi-bin/sword/wifi/mon.txt
 else
 	card=$(iw dev | awk '$1=="Interface"{print $2}' | sed -e '2d' )
 	echo "<h2>Starting Monitor Mode on $card</h2>"
-	echo "<pre> $(sudo ifconfig $card down && sudo iwconfig $card mode monitor && ifconfig $card up) </pre>"
+	echo "<pre> $(sudo ifconfig $card down && sudo iwconfig $card mode monitor && sudo ifconfig $card up) </pre>"
 	echo "<br>"
 	echo 1 > /www/cgi-bin/sword/wifi/mon.txt
 fi
