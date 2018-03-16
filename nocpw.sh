@@ -10,7 +10,7 @@ echo '<title>PixieWPS Attack</title>'
 echo '</head>'
 echo '<body>'
 
-mon0check='ifconfig | grep mon | awk '{print $1}' | cut -b 5'
+mon0check=`iwconfig wlan1 | grep Monitor | sed -e "s/Mode:/ /" | awk '{print $1}' | cut -b 5`
 if [ $mon0check -ne 1 ]; then
 echo "<script>alert(\"Wi-Fi monitor mode is not enabled.\")</script>"
 else
