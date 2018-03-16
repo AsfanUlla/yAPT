@@ -4,10 +4,6 @@ echo ""
 echo "<html><head><title>MonitorModeI"
 echo "</title></head><body>"
 
-#For Get request
-USERNAME=`echo "$QUERY_STRING" | sed -n 's/^.*username=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"
-PASSWORD=`echo "$QUERY_STRING" | sed -n 's/^.*password=\([^&]*\).*$/\1/p' | sed "s/%20/ /g"
-
 mon0check=`ip addr | grep mon0 | awk '{print $1}' | cut -b 4`
 if [ $mon0check -eq 0 ]; then 
 echo "<script>alert(\"Wi-Fi monitor mode already enabed on Mon0\")</script>"
