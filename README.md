@@ -1,2 +1,2 @@
 # yAPT
-WEB+Android frameworks for hacking wireless and Network.
+WEB+Android frameworks for Securing wireless network and Devices.
